@@ -42,6 +42,7 @@ class WelcomeViewController: UIViewController {
         goButton.setBackgroundImage(dimmedPixel, for: .selected)
         goButton.layer.cornerRadius = 10
         goButton.setTitle("Explore", for: .normal)
+        goButton.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .heavy, width: .expanded)
         goButton.addTarget(self, action: #selector(buttonTap), for: .touchUpInside)
         return goButton
     }()
@@ -68,7 +69,7 @@ class WelcomeViewController: UIViewController {
         let safeAreaGuide = view.safeAreaLayoutGuide
         NSLayoutConstraint.activate([
             
-            titleLabel.topAnchor.constraint(equalTo: safeAreaGuide.topAnchor, constant: 65),
+            titleLabel.topAnchor.constraint(equalTo: safeAreaGuide.topAnchor, constant: 5),
             titleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
             titleLabel.trailingAnchor.constraint(equalTo: safeAreaGuide.trailingAnchor, constant: -30),
             

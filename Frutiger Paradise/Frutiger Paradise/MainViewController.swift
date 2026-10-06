@@ -9,6 +9,14 @@ import Foundation
 import UIKit
 
 class MainViewController: UIViewController {
+    
+    private lazy var cardCollection: UICollectionView = {
+        let cardCollection = UICollectionView()
+        cardCollection.translatesAutoresizingMaskIntoConstraints = false
+        
+        
+        return cardCollection
+    }()
 
     private lazy var titleLabel: UILabel = {
         let titleLabel = UILabel()
@@ -41,7 +49,14 @@ class MainViewController: UIViewController {
             
             titleLabel.topAnchor.constraint(equalTo: safeAreaGuide.topAnchor, constant: 16),
             titleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
+            
+            cardCollection.
     
         ])
     }
+}
+
+extension MainViewController: UICollectionViewDelegate {}
+extension MainViewController: UICollectionViewLayout {
+    
 }
