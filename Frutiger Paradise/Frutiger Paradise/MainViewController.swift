@@ -9,12 +9,19 @@ import Foundation
 import UIKit
 
 class MainViewController: UIViewController {
-    
+
+    var cells = [CardCollectionViewCell()]
+
     private lazy var cardCollection: UICollectionView = {
-        let cardCollection = UICollectionView()
+        let viewLayout = UICollectionViewFlowLayout()
+        
+        let cardCollection = UICollectionView(
+            frame: .zero,
+            collectionViewLayout: viewLayout
+        )
+        cardCollection.backgroundColor = .black
         cardCollection.translatesAutoresizingMaskIntoConstraints = false
-        
-        
+        cardCollection.register(CardCollectionViewCell.self, forCellWithReuseIdentifier: "card")
         return cardCollection
     }()
 
@@ -31,11 +38,18 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         setupView()
         addSubviews()
+        setupCollectionView()
         setupConstraints()
     }
     
     func addSubviews() {
         view.addSubview(titleLabel)
+        view.addSubview(cardCollection)
+    }
+    
+    func setupCollectionView() {
+        cardCollection.delegate = self
+        cardCollection.dataSource = self
     }
     
     func setupView() {
@@ -50,13 +64,22 @@ class MainViewController: UIViewController {
             titleLabel.topAnchor.constraint(equalTo: safeAreaGuide.topAnchor, constant: 16),
             titleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
             
-            cardCollection.
+        //collection to be added
+            
     
         ])
     }
 }
 
 extension MainViewController: UICollectionViewDelegate {}
-extension MainViewController: UICollectionViewLayout {
-    
+extension MainViewController: UICollectionViewDataSource {
+
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return cells.count
+    }
+
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        <#code#>
+    }
 }
+
