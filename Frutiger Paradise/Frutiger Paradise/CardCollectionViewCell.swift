@@ -59,4 +59,8 @@ class CardCollectionViewCell: UICollectionViewCell {
             cardTextLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -5),
         ])
     }
+    
+    func configure(image: UIImage) {
+        cardImage.image = image
+    }
 }
