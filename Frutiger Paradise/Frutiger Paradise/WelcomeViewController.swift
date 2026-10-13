@@ -8,7 +8,6 @@
 import UIKit
 
 class WelcomeViewController: UIViewController {
-
     private lazy var titleLabel: UILabel = {
         let titleLabel = UILabel()
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -19,7 +18,7 @@ class WelcomeViewController: UIViewController {
         titleLabel.backgroundColor = .clear
         return titleLabel
     }()
-    
+
     private lazy var textLabel: UILabel = {
         let textLabel = UILabel()
         textLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -30,9 +29,9 @@ class WelcomeViewController: UIViewController {
         textLabel.backgroundColor = .clear
         return textLabel
     }()
-    
+
     private lazy var goButton: UIButton = {
-      let goButton = UIButton()
+        let goButton = UIButton()
         goButton.translatesAutoresizingMaskIntoConstraints = false
         goButton.clipsToBounds = true
         guard let pixel = UIImage(named: "bluePixel") else { return goButton }
@@ -49,12 +48,12 @@ class WelcomeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         setupView()
         addSubviews()
         setupConstraints()
     }
-    
+
     func setupView() {
         view.backgroundColor = .black
     }
@@ -68,15 +67,14 @@ class WelcomeViewController: UIViewController {
     func setupConstraints() {
         let safeAreaGuide = view.safeAreaLayoutGuide
         NSLayoutConstraint.activate([
-            
             titleLabel.topAnchor.constraint(equalTo: safeAreaGuide.topAnchor, constant: 5),
             titleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
             titleLabel.trailingAnchor.constraint(equalTo: safeAreaGuide.trailingAnchor, constant: -30),
-            
+
             textLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 40),
             textLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
             textLabel.trailingAnchor.constraint(equalTo: safeAreaGuide.trailingAnchor, constant: -140),
-            
+
             goButton.widthAnchor.constraint(equalToConstant: 300),
             goButton.heightAnchor.constraint(equalToConstant: 60),
             goButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
@@ -88,7 +86,7 @@ class WelcomeViewController: UIViewController {
         let mainVc = MainViewController()
         navigationController?.pushViewController(mainVc, animated: true)
     }
-    
+
     func imageWithAlpha(_ image: UIImage, alpha: CGFloat) -> UIImage {
         let renderer = UIGraphicsImageRenderer(size: image.size)
         return renderer.image { _ in image.draw(at: .zero, blendMode: .normal, alpha: alpha)

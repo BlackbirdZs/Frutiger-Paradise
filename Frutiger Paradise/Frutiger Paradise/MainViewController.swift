@@ -34,7 +34,7 @@ class MainViewController: UIViewController {
         titleLabel.numberOfLines = .max
         return titleLabel
     }()
-    
+
     private lazy var belowLabel: UILabel = {
         let belowLabel = UILabel()
         belowLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -80,7 +80,7 @@ class MainViewController: UIViewController {
             cardCollection.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             cardCollection.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             cardCollection.bottomAnchor.constraint(equalTo: safeAreaGuide.bottomAnchor, constant: -220),
-            
+
             belowLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
             belowLabel.topAnchor.constraint(equalTo: cardCollection.bottomAnchor, constant: 35),
         ])

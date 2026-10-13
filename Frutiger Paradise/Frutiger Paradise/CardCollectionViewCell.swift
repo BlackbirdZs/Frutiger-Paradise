@@ -9,13 +9,12 @@ import Foundation
 import UIKit
 
 class CardCollectionViewCell: UICollectionViewCell {
-    
     private lazy var cardImage: UIImageView = {
         let cardView = UIImageView(frame: .zero)
         cardView.translatesAutoresizingMaskIntoConstraints = false
         return cardView
     }()
-    
+
     private lazy var cardTextLabel: UILabel = {
         let cardTextLabel = UILabel()
         cardTextLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -29,10 +28,10 @@ class CardCollectionViewCell: UICollectionViewCell {
     required init(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     override func prepareForReuse() {
         super.prepareForReuse()
-        
+
         isHidden = false
         isSelected = false
         isHighlighted = false
@@ -47,16 +46,16 @@ class CardCollectionViewCell: UICollectionViewCell {
     }
 
     func setupContentView() {
-        self.backgroundColor = .clear
+        backgroundColor = .clear
         contentView.clipsToBounds = true
         contentView.contentMode = .scaleAspectFill
         contentView.layer.cornerCurve = .continuous
         contentView.layer.cornerRadius = 15
     }
 
-     func addSubviews() {
-         contentView.addSubview(cardImage)
-         contentView.addSubview(cardTextLabel)
+    func addSubviews() {
+        contentView.addSubview(cardImage)
+        contentView.addSubview(cardTextLabel)
     }
 
     func setupConstraints() {
@@ -71,7 +70,7 @@ class CardCollectionViewCell: UICollectionViewCell {
             cardTextLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -5),
         ])
     }
-    
+
     func configure(with card: ParadiseCard) {
         cardImage.image = UIImage(named: card.image)
         cardTextLabel.text = card.descriprion

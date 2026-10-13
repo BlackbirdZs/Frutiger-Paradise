@@ -13,12 +13,12 @@ struct ParadiseCard {
 }
 
 extension ParadiseCard {
-    static func make() -> [ParadiseCard] {[
+    static func make() -> [ParadiseCard] { [
         ParadiseCard(descriprion: "Some decription", image: "pic20"),
         ParadiseCard(descriprion: "Some decription", image: "pic20"),
         ParadiseCard(descriprion: "Some decription", image: "pic20"),
         ParadiseCard(descriprion: "Some decription", image: "pic20"),
         ParadiseCard(descriprion: "Some decription", image: "pic20"),
         ParadiseCard(descriprion: "Some decription", image: "pic20"),
-    ]}
+    ] }
 }
