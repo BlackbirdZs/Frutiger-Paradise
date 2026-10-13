@@ -30,6 +30,14 @@ class CardCollectionViewCell: UICollectionViewCell {
     required init(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        isHidden = false
+        isSelected = false
+        isHighlighted = false
+    }
 
     override init(frame: CGRect) {
         super.init(frame: .zero)
@@ -45,6 +53,7 @@ class CardCollectionViewCell: UICollectionViewCell {
 
      func addSubviews() {
          contentView.addSubview(cardImage)
+         contentView.addSubview(cardTextLabel)
     }
 
     func setupConstraints() {
@@ -60,7 +69,8 @@ class CardCollectionViewCell: UICollectionViewCell {
         ])
     }
     
-    func configure(image: UIImage) {
-        cardImage.image = image
+    func configure(with card: ParadiseCard) {
+        cardImage.image = UIImage(named: card.image)
+        cardTextLabel.text = card.descriprion
     }
 }
