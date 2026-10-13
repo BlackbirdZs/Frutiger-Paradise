@@ -9,7 +9,6 @@ import Foundation
 import UIKit
 
 class MainViewController: UIViewController {
-    
     fileprivate let cards = ParadiseCard.make()
 
     private lazy var cardCollection: UICollectionView = {
@@ -20,9 +19,8 @@ class MainViewController: UIViewController {
             frame: .zero,
             collectionViewLayout: viewLayout
         )
-        cardCollection.backgroundColor = .black
+        cardCollection.backgroundColor = .clear
         cardCollection.translatesAutoresizingMaskIntoConstraints = false
-        cardCollection.isScrollEnabled = true
         cardCollection.register(CardCollectionViewCell.self, forCellWithReuseIdentifier: "card")
         return cardCollection
     }()
@@ -32,8 +30,19 @@ class MainViewController: UIViewController {
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.text = "Archive of a promised future"
         titleLabel.textColor = .white
-        titleLabel.font = UIFont.systemFont(ofSize: 18, weight: .semibold, width: .expanded)
+        titleLabel.font = UIFont.systemFont(ofSize: 30, weight: .semibold, width: .expanded)
+        titleLabel.numberOfLines = .max
         return titleLabel
+    }()
+    
+    private lazy var belowLabel: UILabel = {
+        let belowLabel = UILabel()
+        belowLabel.translatesAutoresizingMaskIntoConstraints = false
+        belowLabel.text = "Tap a memory to open its story"
+        belowLabel.textColor = .white
+        belowLabel.font = UIFont.systemFont(ofSize: 15, weight: .semibold, width: .expanded)
+
+        return belowLabel
     }()
 
     override func viewDidLoad() {
@@ -47,6 +56,7 @@ class MainViewController: UIViewController {
     func addSubviews() {
         view.addSubview(titleLabel)
         view.addSubview(cardCollection)
+        view.addSubview(belowLabel)
     }
 
     func setupCollectionView() {
@@ -55,36 +65,38 @@ class MainViewController: UIViewController {
     }
 
     func setupView() {
-        view.backgroundColor = .systemGray
+        view.backgroundColor = .black
     }
 
     func setupConstraints() {
         let safeAreaGuide = view.safeAreaLayoutGuide
 
         NSLayoutConstraint.activate([
-            titleLabel.topAnchor.constraint(equalTo: safeAreaGuide.topAnchor, constant: 16),
+            titleLabel.topAnchor.constraint(equalTo: safeAreaGuide.topAnchor, constant: 35),
             titleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
+            titleLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
 
-            cardCollection.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 15),
+            cardCollection.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 30),
             cardCollection.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             cardCollection.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            cardCollection.bottomAnchor.constraint(equalTo: safeAreaGuide.bottomAnchor, constant: -20),
+            cardCollection.bottomAnchor.constraint(equalTo: safeAreaGuide.bottomAnchor, constant: -220),
+            
+            belowLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
+            belowLabel.topAnchor.constraint(equalTo: cardCollection.bottomAnchor, constant: 35),
         ])
     }
 }
 
 extension MainViewController: UICollectionViewDelegateFlowLayout {
-    
-    enum SpacingConstants {
-        static let spacing: CGFloat = 8.0
-        
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let itemHeight = collectionView.bounds.height * 0.9
+        let itemWidth = collectionView.bounds.width - 170
+
+        return CGSize(width: itemWidth, height: itemHeight)
     }
- 
-    internal func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {UIEdgeInsets(top: 40.0, left: SpacingConstants.spacing, bottom: 40.0, right: SpacingConstants.spacing)
-    }
-    
+
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 20.0
+        return 10.0
     }
 }
 

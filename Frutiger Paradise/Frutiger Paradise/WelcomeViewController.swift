@@ -83,7 +83,7 @@ class WelcomeViewController: UIViewController {
             goButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -100),
         ])
     }
-    
+
     @objc func buttonTap() {
         let mainVc = MainViewController()
         navigationController?.pushViewController(mainVc, animated: true)

@@ -20,8 +20,7 @@ class CardCollectionViewCell: UICollectionViewCell {
         let cardTextLabel = UILabel()
         cardTextLabel.translatesAutoresizingMaskIntoConstraints = false
         cardTextLabel.backgroundColor = .clear
-        cardTextLabel.text = "Test"
-        cardTextLabel.textColor = .white
+        cardTextLabel.textColor = .red
         cardTextLabel.numberOfLines = .max
         cardTextLabel.font = UIFont.systemFont(ofSize: 10, weight: .medium, width: .expanded)
         return cardTextLabel
@@ -48,7 +47,11 @@ class CardCollectionViewCell: UICollectionViewCell {
     }
 
     func setupContentView() {
-        self.backgroundColor = .systemGray
+        self.backgroundColor = .clear
+        contentView.clipsToBounds = true
+        contentView.contentMode = .scaleAspectFill
+        contentView.layer.cornerCurve = .continuous
+        contentView.layer.cornerRadius = 15
     }
 
      func addSubviews() {
