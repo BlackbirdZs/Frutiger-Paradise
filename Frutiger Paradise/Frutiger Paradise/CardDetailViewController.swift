@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 
 class CardDetailViewController: UIViewController {
+        
     private lazy var detailDescription: UILabel = {
         let detailDescription = UILabel()
         detailDescription.translatesAutoresizingMaskIntoConstraints = false
